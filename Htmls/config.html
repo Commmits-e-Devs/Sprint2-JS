@@ -1,11 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Settings</title>
+  <link rel="stylesheet" href="../csss/config.css">
 </head>
+
 <body>
-    
+
+<div class="phone">
+
+  <div class="settings-header">
+    <div class="settings-title">Settings</div>
+  </div>
+
+  <!-- CAMERA SECTION -->
+  <div class="section">
+    <div class="section-label">Camera</div>
+
+    <div class="setting-row">
+      <div class="row-left">
+        <div class="row-icon icon-blue">📷</div>
+        <div class="row-info">
+          <span class="row-label">Resolution</span>
+          <span class="row-sub">Qualidade da foto</span>
+        </div>
+      </div>
+      <div class="res-right">
+        <div class="res-badge">12MP</div>
+        <span class="chevron">></span>
+      </div>
+    </div>
+
+    <div class="setting-row">
+      <div class="row-left">
+        <div class="row-icon icon-purple">⊞</div>
+        <div class="row-info">
+          <span class="row-label">Grid Overlay</span>
+          <span class="row-sub">Grade de enquadramento</span>
+        </div>
+      </div>
+      <div class="toggle off" onclick="toggleSwitch(this)"></div>
+    </div>
+
+  </div>
+
+  <!-- DISPLAY SECTION -->
+  <div class="section">
+    <div class="section-label">Display</div>
+
+    <div class="setting-row">
+      <div class="row-left">
+        <div class="row-icon icon-teal">🌙</div>
+        <div class="row-info">
+          <span class="row-label">Dark Mode</span>
+          <span class="row-sub">Tema escuro</span>
+        </div>
+      </div>
+      <div class="toggle on" onclick="toggleSwitch(this)"></div>
+    </div>
+
+  </div>
+  
+  <!-- AI SECTION -->
+  <div class="section">
+    <div class="section-label">Inteligência Artificial</div>
+
+    <div class="setting-row">
+      <div class="row-left">
+        <div class="row-icon icon-orange">✦</div>
+        <div class="row-info">
+          <span class="row-label">AI Features</span>
+          <span class="row-sub">Smart HDR, Night Mode</span>
+        </div>
+      </div>
+      <div class="toggle on" onclick="toggleSwitch(this)"></div>
+    </div>
+
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="settings-footer">
+    <div class="footer-logo">Camera App</div>
+    <div class="footer-version">v1.0 · Versão de produção</div>
+  </div>
+
+</div>
+
+<script>
+  function toggleSwitch(el) {
+    el.classList.toggle('on');
+    el.classList.toggle('off');
+  }
+</script>
+
 </body>
 </html>
