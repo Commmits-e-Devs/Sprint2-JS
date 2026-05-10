@@ -1,0 +1,200 @@
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+ 
+  body {
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: -apple-system, 'Helvetica Neue', sans-serif;
+  }
+ 
+  .phone {
+    width: 402px;
+    height: 874px;
+    background: #090909;
+    border-radius: 44px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid #2a2a35;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+ 
+  /* HEADER */
+  .settings-header {
+    padding: 60px 28px 32px;
+    flex-shrink: 0;
+  }
+ 
+  .settings-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.9px;
+  }
+ 
+  /* SECTION */
+  .section {
+    flex-shrink: 0;
+    margin: 0 16px 24px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 18px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+ 
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    padding: 16px 20px 8px;
+  }
+ 
+  .setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+ 
+  .setting-row:hover { background: rgba(255,255,255,0.03); }
+ 
+  .setting-row + .setting-row::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20px; right: 20px;
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+  }
+ 
+  .row-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+ 
+  .row-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+ 
+  .icon-blue   { background: #1a6ef5; }
+  .icon-purple { background: #7c3aed; }
+  .icon-teal   { background: #0d9488; }
+  .icon-orange { background: #ea580c; }
+ 
+  .row-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+ 
+  .row-label {
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+  }
+ 
+  .row-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+ 
+  /* TOGGLE */
+  .toggle {
+    width: 52px;
+    height: 30px;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+    transition: background 0.28s cubic-bezier(.4,0,.2,1);
+    flex-shrink: 0;
+  }
+ 
+  .toggle.off { background: #3a3a3c; }
+  .toggle.on  { background: #30d158; }
+ 
+  .toggle::after {
+    content: '';
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #fff;
+    top: 2px;
+    transition: left 0.28s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  }
+ 
+  .toggle.off::after { left: 2px; }
+  .toggle.on::after  { left: 24px; }
+ 
+  /* RESOLUTION BADGE */
+  .res-badge {
+    background: #2c2c2e;
+    border-radius: 9px;
+    padding: 6px 13px;
+    font-size: 14px;
+    color: #fff;
+    font-weight: 500;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+ 
+  /* CHEVRON */
+  .chevron {
+    font-size: 14px;
+    color: rgba(255,255,255,0.25);
+    margin-left: 4px;
+  }
+ 
+  .res-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+ 
+  /* FOOTER */
+  .spacer { flex: 1; }
+ 
+  .settings-footer {
+    padding: 0 28px 44px;
+    flex-shrink: 0;
+  }
+ 
+  .footer-logo {
+    font-size: 14px;
+    color: rgba(255,255,255,0.18);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+ 
+  .footer-version {
+    font-size: 12px;
+    color: rgba(255,255,255,0.12);
+  }
+ 
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 15px;
+    color: #4a9eff;
+    cursor: pointer;
+    padding: 0 0 12px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+  }
+ 
+  .back-btn:hover { opacity: 0.7; }
