@@ -7,9 +7,8 @@
     <link rel="stylesheet" href="../Csss/camera.css">
 </head>
 <body>
- 
-<div class="phone" style="position:relative;">
- 
+  
+<div class="phone">
   <div class="flash" id="flash"></div>
  
   <div class="status-bar">
@@ -21,18 +20,60 @@
   </div>
  
   <div class="cam-top">
-    <div class="night-badge">Night Mode</div>
+    <div class="night-badge">Modo noturno</div>
     <span class="hdr-text">Smart HDR recomendado</span>
   </div>
  
+  <!-- VISOR com 3 cenas -->
   <div class="viewfinder">
+ 
+    <!-- Cena 1: Pôr do sol urbano -->
+    <div class="scene scene-1 active">
+      <div class="buildings"></div>
+      <div class="win" style="bottom:22%;left:18%"></div>
+      <div class="win" style="bottom:28%;left:22%"></div>
+      <div class="win" style="bottom:22%;left:58%"></div>
+      <div class="win" style="bottom:30%;left:62%"></div>
+      <div class="win" style="bottom:25%;left:78%"></div>
+    </div>
+ 
+    <!-- Cena 2: Natureza -->
+    <div class="scene scene-2">
+      <div class="sun"></div>
+      <div class="mountain"></div>
+      <div class="mountain2"></div>
+      <div class="cloud" style="top:25%;left:8%;width:60px;height:18px;"></div>
+      <div class="cloud" style="top:32%;left:60%;width:45px;height:14px;"></div>
+    </div>
+ 
+    <!-- Cena 3: Retrato -->
+    <div class="scene scene-3">
+      <div class="bokeh" style="width:80px;height:80px;top:8%;left:5%;"></div>
+      <div class="bokeh" style="width:50px;height:50px;top:15%;right:8%;"></div>
+      <div class="bokeh" style="width:35px;height:35px;bottom:30%;left:10%;"></div>
+      <div class="bokeh" style="width:60px;height:60px;bottom:20%;right:5%;"></div>
+      <div class="hair"></div>
+      <div class="head"></div>
+      <div class="body"></div>
+    </div>
+ 
+    <!-- Overlays sempre visíveis -->
     <div class="vf-grid">
       <span class="h1"></span>
       <span class="h2"></span>
       <span class="v1"></span>
       <span class="v2"></span>
     </div>
-    <div class="crosshair"></div>
+ 
+    <div class="scene-label" id="sceneLabel">Pôr do Sol Urbano</div>
+    <div class="crosshair" id="crosshair"></div>
+ 
+    <div class="scene-dots">
+      <div class="scene-dot active"></div>
+      <div class="scene-dot"></div>
+      <div class="scene-dot"></div>
+    </div>
+ 
   </div>
  
   <div class="mode-tabs">
@@ -44,41 +85,18 @@
   <div class="sub-modes">
     <span class="sub-mode">PRO</span>
     <span class="sub-mode">PORTRAIT</span>
-    <span class="sub-mode">NIGHT</span>
+    <span class="sub-mode">Noite</span>
   </div>
  
   <div class="controls-row">
-    <!-- Miniatura → Galeria -->
-    <div class="gallery-thumb" onclick="goTo('./galeria.html')" title="Abrir Galeria"></div>
- 
-    <!-- Shutter → flash + vai para Galeria -->
-    <button class="shutter" onclick="takePhoto()"></button>
- 
-    <!-- Flip → Settings -->
-    <div class="flip-btn" onclick="goTo('./config.html')" title="Configurações">⚙</div>
+    <div class="gallery-thumb" id="btn-gallery" title="Abrir Galeria"></div>
+    <button class="shutter" id="btn-shutter"></button>
+    <div class="flip-btn" id="btn-settings" title="Configurações">↺</div>
   </div>
- 
 </div>
  
-<script>
-  function setMode(el) {
-    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
-    el.classList.add('active');
-  }
- 
-  function goTo(page) {
-    window.location.href = page;
-  }
- 
-  function takePhoto() {
-    const flash = document.getElementById('flash');
-    flash.classList.add('active');
-    setTimeout(() => {
-      flash.classList.remove('active');
-      setTimeout(() => goTo('./galeria.html'), 120);
-    }, 80);
-  }
-</script>
+
+<script src="./cameraJS.js"></script>
  
 </body>
 

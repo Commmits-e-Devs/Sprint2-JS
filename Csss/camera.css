@@ -1,4 +1,4 @@
- * { margin: 0; padding: 0; box-sizing: border-box; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
  
   body {
     background: #111;
@@ -8,8 +8,8 @@
     min-height: 100vh;
     font-family: -apple-system, 'Helvetica Neue', sans-serif;
   }
-
-    .phone {
+ 
+  .phone {
     width: 402px;
     height: 874px;
     background: #080810;
@@ -19,6 +19,7 @@
     flex-direction: column;
     border: 1.5px solid #2a2a35;
     box-shadow: 0 30px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+    position: relative;
   }
  
   /* STATUS BAR */
@@ -30,19 +31,8 @@
     flex-shrink: 0;
   }
  
-  .time {
-    font-size: 17px;
-    font-weight: 600;
-    color: #fff;
-    letter-spacing: -0.3px;
-  }
- 
-  .status-icons {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
- 
+  .time { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.3px; }
+  .status-icons { display: flex; align-items: center; gap: 10px; }
   .bolt { color: #f5a623; font-size: 18px; }
   .ai   { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
  
@@ -65,71 +55,204 @@
     font-weight: 500;
   }
  
-  .hdr-text {
-    font-size: 13px;
-    color: rgba(255,255,255,0.45);
-  }
+  .hdr-text { font-size: 13px; color: rgba(255,255,255,0.45); }
  
   /* VIEWFINDER */
   .viewfinder {
     flex: 1;
     margin: 0 16px;
     border-radius: 20px;
-    background: #0d0d1a;
     border: 1.5px solid rgba(255,255,255,0.1);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background: #0d0d1a;
   }
  
-  .viewfinder::before {
-    content: '';
+  /* ── CENAS ── */
+  .scene {
     position: absolute;
     inset: 0;
-    background:
-      radial-gradient(ellipse at 30% 40%, rgba(30,30,90,0.5) 0%, transparent 60%),
-      radial-gradient(ellipse at 70% 65%, rgba(15,15,60,0.4) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+  }
+  .scene.active { opacity: 1; }
+ 
+  /* Cena 1 — Pôr do sol urbano */
+  .scene-1 {
+    background: linear-gradient(180deg,
+      #1a0533 0%, #3d1060 20%, #7b2d8b 40%,
+      #e05c2a 65%, #f5a623 80%, #ffd080 100%);
+  }
+  .scene-1 .buildings {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 38%;
+    background: #08080f;
+    clip-path: polygon(
+      0% 100%, 0% 55%, 5% 55%, 5% 40%, 10% 40%, 10% 55%,
+      14% 55%, 14% 28%, 18% 28%, 18% 55%,
+      22% 55%, 22% 38%, 27% 38%, 27% 20%, 31% 20%, 31% 38%,
+      35% 38%, 35% 50%, 40% 50%, 40% 32%, 44% 32%, 44% 50%,
+      48% 50%, 48% 42%, 53% 42%, 53% 25%, 57% 25%, 57% 42%,
+      61% 42%, 61% 55%, 65% 55%, 65% 35%, 69% 35%, 69% 55%,
+      73% 55%, 73% 44%, 78% 44%, 78% 30%, 82% 30%, 82% 44%,
+      86% 44%, 86% 52%, 90% 52%, 90% 38%, 94% 38%, 94% 52%,
+      98% 52%, 98% 100%
+    );
+  }
+  .scene-1 .win {
+    position: absolute;
+    width: 4px; height: 4px;
+    background: #f5a623;
+    border-radius: 1px;
+    opacity: 0.7;
   }
  
-  /* grid lines */
+  /* Cena 2 — Natureza */
+  .scene-2 {
+    background: linear-gradient(180deg,
+      #0a1628 0%, #1a3a6e 35%, #2d6aa0 58%,
+      #5bb8d4 78%, #c8ecf5 100%);
+  }
+  .scene-2 .mountain {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 55%;
+    background: linear-gradient(160deg, #1b4332 0%, #2d6a4f 50%, #40916c 100%);
+    clip-path: polygon(
+      0% 100%, 0% 65%, 10% 38%, 20% 58%, 28% 18%, 38% 52%,
+      46% 28%, 55% 55%, 64% 12%, 74% 50%, 82% 30%, 92% 55%,
+      100% 38%, 100% 100%
+    );
+  }
+  .scene-2 .mountain2 {
+    position: absolute;
+    bottom: 0; left: 0; right: 0; height: 35%;
+    background: linear-gradient(160deg, #081c0f 0%, #1b4332 100%);
+    clip-path: polygon(
+      0% 100%, 0% 75%, 15% 50%, 30% 70%, 45% 42%, 60% 68%,
+      75% 48%, 90% 65%, 100% 50%, 100% 100%
+    );
+  }
+  .scene-2 .sun {
+    position: absolute;
+    top: 16%; right: 22%;
+    width: 38px; height: 38px;
+    background: radial-gradient(circle, #fffde7, #fff59d);
+    border-radius: 50%;
+    box-shadow: 0 0 22px 10px rgba(255,249,196,0.4);
+  }
+  .scene-2 .cloud {
+    position: absolute;
+    background: rgba(255,255,255,0.18);
+    border-radius: 50px;
+  }
+ 
+  /* Cena 3 — Retrato */
+  .scene-3 {
+    background: linear-gradient(160deg,
+      #1a1a2e 0%, #16213e 40%, #0f3460 70%, #533483 100%);
+  }
+  .scene-3 .body {
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 150px; height: 210px;
+    background: linear-gradient(180deg, #c9a87c 0%, #b8946a 20%, #1a0e05 100%);
+    border-radius: 75px 75px 0 0;
+  }
+  .scene-3 .head {
+    position: absolute;
+    bottom: 175px; left: 50%;
+    transform: translateX(-50%);
+    width: 76px; height: 86px;
+    background: radial-gradient(ellipse at 50% 60%, #d4a574 60%, #c49060 100%);
+    border-radius: 50%;
+  }
+  .scene-3 .hair {
+    position: absolute;
+    bottom: 237px; left: 50%;
+    transform: translateX(-50%);
+    width: 82px; height: 50px;
+    background: #1a0e05;
+    border-radius: 50% 50% 0 0;
+  }
+  .scene-3 .bokeh {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+  }
+ 
+  /* Grid lines do visor */
   .vf-grid {
     position: absolute;
     inset: 0;
     pointer-events: none;
+    z-index: 3;
   }
- 
   .vf-grid span {
     position: absolute;
-    background: rgba(255,255,255,0.04);
+    background: rgba(255,255,255,0.06);
   }
- 
   .vf-grid .h1 { width: 100%; height: 1px; top: 33.3%; }
   .vf-grid .h2 { width: 100%; height: 1px; top: 66.6%; }
   .vf-grid .v1 { width: 1px; height: 100%; left: 33.3%; }
   .vf-grid .v2 { width: 1px; height: 100%; left: 66.6%; }
  
+  /* Crosshair */
   .crosshair {
-    width: 80px;
-    height: 80px;
-    border: 1.5px solid rgba(255,255,255,0.75);
+    width: 80px; height: 80px;
+    border: 1.5px solid rgba(255,255,255,0.8);
     border-radius: 4px;
     position: relative;
-    z-index: 1;
+    z-index: 4;
+    transition: transform 0.4s ease;
   }
- 
-  .crosshair::before,
-  .crosshair::after {
+  .crosshair::before, .crosshair::after {
     content: '';
     position: absolute;
-    background: rgba(255,255,255,0.75);
+    background: rgba(255,255,255,0.8);
     top: 50%; left: 50%;
     transform: translate(-50%, -50%);
   }
- 
   .crosshair::before { width: 1.5px; height: 26px; }
   .crosshair::after  { width: 26px;  height: 1.5px; }
+ 
+  /* Dots indicadores */
+  .scene-dots {
+    position: absolute;
+    bottom: 14px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; gap: 7px;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .scene-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    transition: background 0.3s, transform 0.3s;
+  }
+  .scene-dot.active { background: #fff; transform: scale(1.4); }
+ 
+  /* Label cena */
+  .scene-label {
+    position: absolute;
+    top: 14px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px; font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.4);
+    padding: 4px 12px;
+    border-radius: 20px;
+    z-index: 5;
+    pointer-events: none;
+    white-space: nowrap;
+  }
  
   /* MODE TABS */
   .mode-tabs {
@@ -139,7 +262,6 @@
     padding: 16px 0 8px;
     flex-shrink: 0;
   }
- 
   .mode-tab {
     font-size: 14px;
     color: rgba(255,255,255,0.35);
@@ -151,20 +273,14 @@
     padding-bottom: 6px;
     transition: color 0.2s;
   }
- 
-  .mode-tab.active {
-    color: #fff;
-    font-weight: 700;
-  }
- 
+  .mode-tab.active { color: #fff; font-weight: 700; }
   .mode-tab.active::after {
     content: '';
     position: absolute;
     bottom: 0; left: 50%;
     transform: translateX(-50%);
     width: 5px; height: 5px;
-    background: #fff;
-    border-radius: 50%;
+    background: #fff; border-radius: 50%;
   }
  
   /* SUB MODES */
@@ -175,7 +291,6 @@
     padding: 0 0 12px;
     flex-shrink: 0;
   }
- 
   .sub-mode {
     font-size: 12px;
     color: rgba(255,255,255,0.28);
@@ -185,7 +300,6 @@
     cursor: pointer;
     transition: color 0.2s;
   }
- 
   .sub-mode:hover { color: rgba(255,255,255,0.6); }
  
   /* CONTROLS */
@@ -198,20 +312,18 @@
   }
  
   .gallery-thumb {
-    width: 56px;
-    height: 56px;
+    width: 56px; height: 56px;
     border-radius: 14px;
     background: linear-gradient(135deg, #a855f7, #ec4899);
     border: 2px solid rgba(255,255,255,0.15);
     cursor: pointer;
     transition: transform 0.15s;
+    overflow: hidden;
   }
- 
   .gallery-thumb:active { transform: scale(0.93); }
  
   .shutter {
-    width: 80px;
-    height: 80px;
+    width: 80px; height: 80px;
     border-radius: 50%;
     background: #fff;
     border: none;
@@ -219,37 +331,27 @@
     box-shadow: 0 0 0 5px rgba(255,255,255,0.15);
     transition: transform 0.1s, box-shadow 0.1s;
   }
- 
   .shutter:active {
     transform: scale(0.92);
     box-shadow: 0 0 0 8px rgba(255,255,255,0.1);
   }
  
   .flip-btn {
-    width: 56px;
-    height: 56px;
+    width: 56px; height: 56px;
     border-radius: 50%;
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    font-size: 24px;
-    color: #fff;
+    font-size: 24px; color: #fff;
     transition: background 0.2s, transform 0.3s;
     user-select: none;
   }
+  .flip-btn:active { background: rgba(255,255,255,0.15); transform: rotate(180deg); }
  
-  .flip-btn:active {
-    background: rgba(255,255,255,0.15);
-    transform: rotate(180deg);
-  }
- 
-  /* FLASH OVERLAY */
+  /* FLASH */
   .flash {
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background: #fff;
     opacity: 0;
     pointer-events: none;
@@ -257,31 +359,4 @@
     z-index: 99;
     transition: opacity 0.05s;
   }
- 
   .flash.active { opacity: 1; }
- 
-  /* NAV HINT */
-  .nav-hint {
-    position: absolute;
-    bottom: 110px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 11px;
-    color: rgba(255,255,255,0.2);
-    white-space: nowrap;
-    pointer-events: none;
-    letter-spacing: 0.4px;
-  }
- 
-  /* SETTINGS icon top right */
-  .settings-btn {
-    position: absolute;
-    top: 18px;
-    right: 28px;
-    font-size: 20px;
-    cursor: pointer;
-    color: rgba(255,255,255,0.6);
-    z-index: 10;
-    transition: color 0.2s;
-  }
-  .settings-btn:hover { color: #fff; }
