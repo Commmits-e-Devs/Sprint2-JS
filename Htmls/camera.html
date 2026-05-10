@@ -4,8 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../csss/camera.css">
 </head>
 <body>
-    
+ 
+<div class="phone" style="position:relative;">
+ 
+  <div class="flash" id="flash"></div>
+ 
+  <div class="status-bar">
+    <span class="time">9:41</span>
+    <div class="status-icons">
+      <span class="bolt">⚡</span>
+      <span class="ai">AI</span>
+    </div>
+  </div>
+ 
+  <div class="cam-top">
+    <div class="night-badge">Night Mode</div>
+    <span class="hdr-text">Smart HDR recomendado</span>
+  </div>
+ 
+  <div class="viewfinder">
+    <div class="vf-grid">
+      <span class="h1"></span>
+      <span class="h2"></span>
+      <span class="v1"></span>
+      <span class="v2"></span>
+    </div>
+    <div class="crosshair"></div>
+  </div>
+ 
+  <div class="mode-tabs">
+    <span class="mode-tab" onclick="setMode(this)">VIDEO</span>
+    <span class="mode-tab active" onclick="setMode(this)">PHOTO</span>
+    <span class="mode-tab" onclick="setMode(this)">SLOW-MO</span>
+  </div>
+ 
+  <div class="sub-modes">
+    <span class="sub-mode">PRO</span>
+    <span class="sub-mode">PORTRAIT</span>
+    <span class="sub-mode">NIGHT</span>
+  </div>
+ 
+  <div class="controls-row">
+    <!-- Miniatura → Galeria -->
+    <div class="gallery-thumb" onclick="goTo('./galeria.html')" title="Abrir Galeria"></div>
+ 
+    <!-- Shutter → flash + vai para Galeria -->
+    <button class="shutter" onclick="takePhoto()"></button>
+ 
+    <!-- Flip → Settings -->
+    <div class="flip-btn" onclick="goTo('./config.html')" title="Configurações">⚙</div>
+  </div>
+ 
+</div>
+ 
+<script>
+  function setMode(el) {
+    document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+ 
+  function goTo(page) {
+    window.location.href = page;
+  }
+ 
+  function takePhoto() {
+    const flash = document.getElementById('flash');
+    flash.classList.add('active');
+    setTimeout(() => {
+      flash.classList.remove('active');
+      setTimeout(() => goTo('./galeria.html'), 120);
+    }, 80);
+  }
+</script>
+ 
 </body>
+
 </html>
