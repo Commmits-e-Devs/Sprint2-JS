@@ -8,3 +8,280 @@
     min-height: 100vh;
     font-family: -apple-system, 'Helvetica Neue', sans-serif;
   }
+
+    .phone {
+    width: 402px;
+    height: 874px;
+    background: #080810;
+    border-radius: 44px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid #2a2a35;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.8), inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+ 
+  /* STATUS BAR */
+  .status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px 8px;
+    flex-shrink: 0;
+  }
+ 
+  .time {
+    font-size: 17px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+ 
+  .status-icons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+ 
+  .bolt { color: #f5a623; font-size: 18px; }
+  .ai   { font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+ 
+  /* TOP CONTROLS */
+  .cam-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 6px 24px 12px;
+    flex-shrink: 0;
+  }
+ 
+  .night-badge {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    color: #fff;
+    font-weight: 500;
+  }
+ 
+  .hdr-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+  }
+ 
+  /* VIEWFINDER */
+  .viewfinder {
+    flex: 1;
+    margin: 0 16px;
+    border-radius: 20px;
+    background: #0d0d1a;
+    border: 1.5px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+ 
+  .viewfinder::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 40%, rgba(30,30,90,0.5) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 65%, rgba(15,15,60,0.4) 0%, transparent 55%);
+  }
+ 
+  /* grid lines */
+  .vf-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+ 
+  .vf-grid span {
+    position: absolute;
+    background: rgba(255,255,255,0.04);
+  }
+ 
+  .vf-grid .h1 { width: 100%; height: 1px; top: 33.3%; }
+  .vf-grid .h2 { width: 100%; height: 1px; top: 66.6%; }
+  .vf-grid .v1 { width: 1px; height: 100%; left: 33.3%; }
+  .vf-grid .v2 { width: 1px; height: 100%; left: 66.6%; }
+ 
+  .crosshair {
+    width: 80px;
+    height: 80px;
+    border: 1.5px solid rgba(255,255,255,0.75);
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+  }
+ 
+  .crosshair::before,
+  .crosshair::after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.75);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+  }
+ 
+  .crosshair::before { width: 1.5px; height: 26px; }
+  .crosshair::after  { width: 26px;  height: 1.5px; }
+ 
+  /* MODE TABS */
+  .mode-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    padding: 16px 0 8px;
+    flex-shrink: 0;
+  }
+ 
+  .mode-tab {
+    font-size: 14px;
+    color: rgba(255,255,255,0.35);
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.2s;
+  }
+ 
+  .mode-tab.active {
+    color: #fff;
+    font-weight: 700;
+  }
+ 
+  .mode-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 5px; height: 5px;
+    background: #fff;
+    border-radius: 50%;
+  }
+ 
+  /* SUB MODES */
+  .sub-modes {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 0 0 12px;
+    flex-shrink: 0;
+  }
+ 
+  .sub-mode {
+    font-size: 12px;
+    color: rgba(255,255,255,0.28);
+    font-weight: 500;
+    letter-spacing: 0.7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+ 
+  .sub-mode:hover { color: rgba(255,255,255,0.6); }
+ 
+  /* CONTROLS */
+  .controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 36px 38px;
+    flex-shrink: 0;
+  }
+ 
+  .gallery-thumb {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    border: 2px solid rgba(255,255,255,0.15);
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+ 
+  .gallery-thumb:active { transform: scale(0.93); }
+ 
+  .shutter {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 0 5px rgba(255,255,255,0.15);
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+ 
+  .shutter:active {
+    transform: scale(0.92);
+    box-shadow: 0 0 0 8px rgba(255,255,255,0.1);
+  }
+ 
+  .flip-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 24px;
+    color: #fff;
+    transition: background 0.2s, transform 0.3s;
+    user-select: none;
+  }
+ 
+  .flip-btn:active {
+    background: rgba(255,255,255,0.15);
+    transform: rotate(180deg);
+  }
+ 
+  /* FLASH OVERLAY */
+  .flash {
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    opacity: 0;
+    pointer-events: none;
+    border-radius: 44px;
+    z-index: 99;
+    transition: opacity 0.05s;
+  }
+ 
+  .flash.active { opacity: 1; }
+ 
+  /* NAV HINT */
+  .nav-hint {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    white-space: nowrap;
+    pointer-events: none;
+    letter-spacing: 0.4px;
+  }
+ 
+  /* SETTINGS icon top right */
+  .settings-btn {
+    position: absolute;
+    top: 18px;
+    right: 28px;
+    font-size: 20px;
+    cursor: pointer;
+    color: rgba(255,255,255,0.6);
+    z-index: 10;
+    transition: color 0.2s;
+  }
+  .settings-btn:hover { color: #fff; }
