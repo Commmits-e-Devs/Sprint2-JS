@@ -1,11 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>Gallery</title>
+  <link rel="stylesheet" href="../csss/galeria.css">
 </head>
 <body>
-    
+ 
+<div class="phone">
+ 
+  <div class="gallery-header">
+    <div class="back-btn" id="btn-back">‹ Câmera</div>
+    <div class="gallery-title">Gallery</div>
+    <div class="tabs-row">
+      <span class="tab active" onclick="switchTab(this)">All</span>
+      <span class="tab" onclick="switchTab(this)">Photos</span>
+      <span class="tab" onclick="switchTab(this)">Videos</span>
+    </div>
+  </div>
+ 
+  <div class="gallery-grid">
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+    <div class="photo-cell"></div>
+  </div>
+ 
+  <div class="bottom-bar">
+    <div class="bottom-icon" id="btn-camera">📷</div>
+    <span class="photos-count">9 fotos</span>
+    <div class="bottom-icon" id="btn-settings">⚙️</div>
+  </div>
+ 
+</div>
+
+<script>
+  function switchTab(el) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+  }
+ 
+  document.getElementById('btn-back').addEventListener('click', function() {
+    window.location.href = 'camera.html';
+  });
+ 
+  document.getElementById('btn-camera').addEventListener('click', function() {
+    window.location.href = 'camera.html';
+  });
+ 
+  document.getElementById('btn-settings').addEventListener('click', function() {
+    window.location.href = 'settings.html';
+  });
+</script>
+ 
 </body>
+
+
+
 </html>
